@@ -1,5 +1,6 @@
 package br.org.generation.blogpessoal.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@GetMapping
+	public ResponseEntity<List<Usuario>> GetAll() {
+		return ResponseEntity.ok(repository.findAll());
+	}
 	
 	@PostMapping("/logar")
 	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user) {
